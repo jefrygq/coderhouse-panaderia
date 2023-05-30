@@ -12,6 +12,7 @@ const OrderItem = ({item, onDeleteItem}) => {
   return (
     <View style={styles.item}>
       <Text>{formatDate(item.date)}</Text>
+      <Text>{item.id}</Text>
       <Text>{item.total}</Text>
     </View>
   );

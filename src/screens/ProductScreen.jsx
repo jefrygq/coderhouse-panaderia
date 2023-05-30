@@ -1,9 +1,17 @@
 import React from 'react';
-import {View, StyleSheet, Text, Image} from 'react-native';
+import {View, StyleSheet, Text, Image, Button} from 'react-native';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../store/actions/cart.action';
 
 const ProductScreen = ({navigation, route}) => {
+  const dispatch = useDispatch();
   const product = route.params.product;
 
+  const handleAddItem = () => {
+    console.log('adding item');
+    console.log(product);
+    dispatch(addItem(product));
+  }; 
   return (
     <View>
       <View>
@@ -14,6 +22,8 @@ const ProductScreen = ({navigation, route}) => {
         <Text>{product.description}</Text>
         <Text>{product.weight}</Text>
         <Text>{product.Price}</Text>
+
+        <Button title="Add to cart" onPress={handleAddItem} />
       </View>
     </View>
   );
